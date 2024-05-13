@@ -9,15 +9,13 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
-interface SignupFormType {
-  name: FormControl<string>;
-  email: FormControl<string>;
+interface ResetPasswordFormType {
   password: FormControl<string>;
   confirmPassword: FormControl<string>;
 }
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-reset-password',
   standalone: true,
   imports: [
     FormsModule,
@@ -31,13 +29,13 @@ interface SignupFormType {
     CommonModule,
     RouterLink
   ],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  templateUrl: './reset-password.component.html',
+  styleUrl: './reset-password.component.scss'
 })
-export class SignupComponent {
+export class ResetPasswordComponent {
   passwordVisible = false;
   confirmPasswordVisible = false;
-  signupForm!: FormGroup<SignupFormType>
+  resetPasswordForm!: FormGroup<ResetPasswordFormType>
 
   constructor(
     private fb: NonNullableFormBuilder
@@ -48,34 +46,32 @@ export class SignupComponent {
   }
 
   initializeForm() {
-    this.signupForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+    this.resetPasswordForm = this.fb.group({
       password: ['', Validators.required],
       confirmPassword: ['', [Validators.required, this.confirmationValidator]]
     });
 
-    this.signupForm.get('password')?.valueChanges.subscribe((password: string) => {
+    this.resetPasswordForm.get('password')?.valueChanges.subscribe((password: string) => {
       this.updateConfirmValidator();
     });
   }
 
   updateConfirmValidator(): void {
-    Promise.resolve().then(() => this.signupForm.controls['confirmPassword'].updateValueAndValidity());
+    Promise.resolve().then(() => this.resetPasswordForm.controls['confirmPassword'].updateValueAndValidity());
   }
 
   confirmationValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
     if (!control.value) {
       return { required: true };
-    } else if (control.value !== this.signupForm.controls['password'].value) {
+    } else if (control.value !== this.resetPasswordForm.controls['password'].value) {
       return { confirm: true, error: true };
     }
     return {};
   };
 
-  submitRegisterForm() {
-    if (this.signupForm.invalid) {
-      Object.values(this.signupForm.controls).forEach(control => {
+  submitResetPasswordForm() {
+    if (this.resetPasswordForm.invalid) {
+      Object.values(this.resetPasswordForm.controls).forEach(control => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -85,8 +81,9 @@ export class SignupComponent {
     }
 
 
-    console.log(this.signupForm.value)
+    console.log(this.resetPasswordForm.value)
 
   }
+
 
 }
