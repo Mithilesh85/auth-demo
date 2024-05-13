@@ -1,0 +1,64 @@
+<div class="wrapper" nz-flex [nzJustify]="'center'" [nzAlign]="'center'">
+    <nz-card nzHoverable nzTitle="Please Register" style="border-top: 3px solid #40A9FF; border-radius: 5px;">
+        <form nz-form [formGroup]="signupForm" class="register-form" (ngSubmit)="submitLoginForm()">
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'Please enter name!'" nzHasFeedback>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="name" placeholder="Enter Name" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="emailErrorTpl" nzHasFeedback>
+                    <nz-input-group>
+                        <input type="text" nz-input formControlName="email" placeholder="Enter Email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzErrorTip="Please enter password!" nzHasFeedback>
+                    <nz-input-group [nzSuffix]="suffixTemplate">
+                        <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password"
+                            placeholder="Enter Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="confirmPasswordErrorTpl" nzHasFeedback>
+                    <nz-input-group [nzSuffix]="confirmPasswordSuffixTemplate">
+                        <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="confirmPassword"
+                            placeholder="Enter Confirm Password" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <button type="submit" nz-button class="register-form-button" [nzType]="'primary'">Register</button>
+            Or
+            <a routerLink="/login">login!</a>
+        </form>
+    </nz-card>
+</div>
+
+
+<ng-template #emailErrorTpl let-control>
+    <ng-container *ngIf="control.hasError('required')">Please enter email!</ng-container>
+    <ng-container *ngIf="control.hasError('email')">
+        Please enter valid email!
+    </ng-container>
+</ng-template>
+
+<ng-template #suffixTemplate>
+    <span nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+        (click)="passwordVisible = !passwordVisible"></span>
+</ng-template>
+
+<ng-template #confirmPasswordSuffixTemplate>
+    <span nz-icon [nzType]="confirmPasswordVisible ? 'eye-invisible' : 'eye'"
+        (click)="confirmPasswordVisible = !confirmPasswordVisible"></span>
+</ng-template>
+
+<ng-template #confirmPasswordErrorTpl let-control>
+    <ng-container *ngIf="control.hasError('required')">Please enter confirm your password!</ng-container>
+    <ng-container *ngIf="control.hasError('confirm')">
+        Password does not match!
+    </ng-container>
+</ng-template>
