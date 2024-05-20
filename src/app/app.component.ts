@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet, RoutesRecognized } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, RoutesRecognized } from '@angular/router';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
@@ -11,7 +11,16 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NzLayoutModule, NzGridModule, NzFlexModule, CommonModule, NzAvatarModule, NzMenuModule],
+  imports: [
+    RouterOutlet,
+    RouterLink,
+    NzLayoutModule,
+    NzGridModule,
+    NzFlexModule,
+    CommonModule,
+    NzAvatarModule,
+    NzMenuModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

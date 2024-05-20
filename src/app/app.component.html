@@ -6,7 +6,7 @@
             </div>
         </nz-header>
         <nz-content>
-            <div *ngIf="!isDashboardPage" class="content" nz-flex [nzJustify]="'center'" [nzAlign]="'center'">
+            <div class="content" nz-flex [nzJustify]="'center'" [nzAlign]="'center'">
                 <router-outlet></router-outlet>
             </div>
         </nz-content>
@@ -28,13 +28,25 @@
         <nz-layout>
             <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
                 <ul nz-menu nzTheme="light" nzMode="inline">
-                    <li nz-menu-item>
+                    <li nz-menu-item routerLink="/dashboard">
                         <span nz-icon nzType="user"></span>
-                        <span>Your Blog</span>
+                        <span>Home</span>
+                    </li>
+                    <li nz-menu-item routerLink="/dashboard/my-books">
+                        <span nz-icon nzType="video-camera"></span>
+                        <span>My Books</span>
                     </li>
                     <li nz-menu-item>
                         <span nz-icon nzType="video-camera"></span>
-                        <span>All Blogs</span>
+                        <span>My Waiting List</span>
+                    </li>
+                    <li nz-menu-item>
+                        <span nz-icon nzType="video-camera"></span>
+                        <span>My Returned Book</span>
+                    </li>
+                    <li nz-menu-item>
+                        <span nz-icon nzType="video-camera"></span>
+                        <span>Borrowed Book</span>
                     </li>
                 </ul>
             </nz-sider>
