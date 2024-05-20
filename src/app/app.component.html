@@ -1,1 +1,39 @@
-<router-outlet></router-outlet>
+<nz-layout class="wrapper">
+    <nz-header>
+        <div nz-row *ngIf="!isDashboardPage">
+            <div nz-col class="title">Social Book Network</div>
+        </div>
+        <div nz-flex [nzJustify]="'space-between'" *ngIf="isDashboardPage">
+            <div class="title">Social Book Network</div>
+            <div nz-flex nzGap="small">
+                <div class="title">Welcome, Mithilesh Shah</div>
+                <nz-avatar class="avatar" nzText="M"></nz-avatar>
+            </div>
+        </div>
+    </nz-header>
+    <nz-content>
+        <div *ngIf="!isDashboardPage" class="content" nz-flex [nzJustify]="'center'" [nzAlign]="'center'">
+            <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="isDashboardPage">
+            <nz-layout>
+                <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="0">
+                    <ul nz-menu nzTheme="light" nzMode="inline">
+                        <li nz-menu-item routerLink="/dashboard/your-blog">
+                            <span nz-icon nzType="user"></span>
+                            <span>Your Blog</span>
+                        </li>
+                        <li nz-menu-item routerLink="/dashboard/all-blog">
+                            <span nz-icon nzType="video-camera"></span>
+                            <span>All Blogs</span>
+                        </li>
+                    </ul>
+                </nz-sider>
+                <nz-content>
+                    <router-outlet></router-outlet>
+                </nz-content>
+            </nz-layout>
+        </div>
+    </nz-content>
+    <nz-footer>Social Book Network ©2024 Developed By Mithilesh Shah</nz-footer>
+</nz-layout>

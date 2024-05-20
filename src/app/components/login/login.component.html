@@ -1,34 +1,30 @@
-<div class="wrapper" nz-flex [nzJustify]="'center'" [nzAlign]="'center'">
-
-    <nz-card nzHoverable nzTitle="Please Login" style="border-top: 3px solid #40A9FF; border-radius: 5px;">
-        <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitLoginForm()">
-            <nz-form-item>
-                <nz-form-control [nzErrorTip]="emailErrorTpl" nzHasFeedback>
-                    <nz-input-group nzPrefixIcon="user">
-                        <input type="text" nz-input formControlName="email" placeholder="Username" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-control nzErrorTip="Please enter password!" nzHasFeedback>
-                    <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
-                        <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password"
-                            placeholder="Password" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <div nz-flex [nzJustify]="'end'">
-                <div>
-                    <a routerLink="/forgot-password">Forgot password?</a>
-                </div>
+<nz-card nzHoverable nzTitle="Please Login" style="border-top: 3px solid #40A9FF; border-radius: 5px;">
+    <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitLoginForm()">
+        <nz-form-item>
+            <nz-form-control [nzErrorTip]="emailErrorTpl" nzHasFeedback>
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="Username" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter password!" nzHasFeedback>
+                <nz-input-group nzPrefixIcon="lock" [nzSuffix]="suffixTemplate">
+                    <input [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password"
+                        placeholder="Password" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <div nz-flex [nzJustify]="'end'">
+            <div>
+                <a routerLink="/forgot-password">Forgot password?</a>
             </div>
-            <button type="submit" nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
-            Or
-            <a routerLink="/signup">register now!</a>
-        </form>
-    </nz-card>
-</div>
-
+        </div>
+        <button type="submit" nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+        Or
+        <a routerLink="/signup">register now!</a>
+    </form>
+</nz-card>
 
 <ng-template #emailErrorTpl let-control>
     <ng-container *ngIf="control.hasError('required')">Please enter email!</ng-container>

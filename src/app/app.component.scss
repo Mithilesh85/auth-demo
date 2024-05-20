@@ -1,0 +1,41 @@
+.wrapper {
+    height: 100vh;
+
+    .ant-layout-header {
+        height: 40px;
+        padding: 0 50px;
+        color: rgba(0, 0, 0, .85);
+        line-height: 40px;
+        background: #40A9FF;
+    }
+
+    .ant-layout-sider-has-trigger {
+        padding-bottom: 0
+    }
+
+    .ant-layout-sider {
+        position: relative;
+        min-width: 0;
+        transition: all .2s;
+    }
+
+    .title {
+        font-weight: bold;
+        color: #ffff;
+    }
+
+    // .content {
+    //     height: 100%;
+    // }
+
+    .avatar {
+        color: #f56a00;
+        background-color: #fde3cf;
+        margin-top: 4px;
+        cursor: pointer;
+    }
+
+    nz-footer {
+        text-align: center;
+    }
+}
